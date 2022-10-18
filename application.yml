@@ -1,0 +1,37 @@
+logging:
+  level:
+    org:
+      springframework:
+        web: warn
+      apache:
+        http:
+          client: warn
+    root: warn
+  pattern:
+    console: "%d{dd-MM HH:mm} - %-5level - %logger{1} - %msg%n"
+
+server:
+  port: "8081"
+
+version:
+  number: 0.3
+
+jwt:
+  secret: mysecretKey443321
+
+spring:
+  profiles:
+    active: "dev"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  main:
+    banner-mode: "off"
+  config:
+    activate:
+      on-profile: prod
