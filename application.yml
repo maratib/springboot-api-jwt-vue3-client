@@ -1,11 +1,11 @@
 logging:
   level:
-    org:
-      springframework:
-        web: warn
-      apache:
-        http:
-          client: warn
+    com:
+      jp: warn
+    # org:
+    #   springframework:
+    #     web: info
+    # security: DEBUG
     root: warn
   pattern:
     console: "%d{dd-MM HH:mm} - %-5level - %logger{1} - %msg%n"
@@ -17,9 +17,11 @@ version:
   number: 0.3
 
 jwt:
-  secret: mysecretKey443321
+  secret: mysecretKey4433210
 
 spring:
+  jpa:
+    open-in-view: "false"
   profiles:
     active: "dev"
 
@@ -28,6 +30,15 @@ spring:
   config:
     activate:
       on-profile: dev
+  datasource:
+    username: temp
+    password: temp
+    url: "jdbc:mysql://localhost:3306/qrcode"
+    Driver: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
 ---
 spring:
   main:
@@ -35,3 +46,12 @@ spring:
   config:
     activate:
       on-profile: prod
+  datasource:
+    username: temp
+    password: temp
+    url: "jdbc:mysql://localhost:3306/qrcode"
+    Driver: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update

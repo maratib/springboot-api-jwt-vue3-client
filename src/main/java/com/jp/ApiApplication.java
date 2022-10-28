@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @SpringBootApplication
 public class ApiApplication {
 
@@ -17,6 +20,12 @@ public class ApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
+
+		log.debug("This is a debug message 1111111111");
+		log.info("This is an info message");
+		log.warn("This is a warn message");
+		log.error("This is an error message");
+		log.debug("null");
 	}
 
 	@PostConstruct()

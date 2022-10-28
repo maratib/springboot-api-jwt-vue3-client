@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="TRACE" monitorInterval="30">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <JDBC name="databaseAppender" tableName="LOG">
+            <ConnectionFactory class="com.jp.config.JdbConnection"
+                method="getConnection" />
+            <!-- <Column name="id" literal="LOGGING.APPLICATION_LOG_SEQUENCE.NEXTVAL" /> -->
+            <Column name="date" isEventTimestamp="true" />
+            <Column name="level" pattern="%level" />
+            <Column name="message" pattern="%message" />
+            <Column name="class" pattern="%class" />
+        </JDBC>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="databaseAppender" />
+        </Root>
+    </Loggers>
+</Configuration>
