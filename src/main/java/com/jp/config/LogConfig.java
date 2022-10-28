@@ -1,24 +1,16 @@
 package com.jp.config;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.appender.db.ColumnMapping;
 import org.apache.logging.log4j.core.appender.db.jdbc.ColumnConfig;
-import org.apache.logging.log4j.core.appender.db.jdbc.ConnectionSource;
 import org.apache.logging.log4j.core.appender.db.jdbc.JdbcAppender;
-import org.apache.logging.log4j.core.filter.ThresholdFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.apache.logging.log4j.core.config.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import java.sql.Connection;
-
 import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
-// import some.package.logging.JdbcConnectionSource;
 
 @Component
 public class LogConfig {
@@ -39,7 +31,7 @@ public class LogConfig {
                                 userName, password, validationQuery);
 
                 ColumnConfig[] columnConfigs = new ColumnConfig[] {
-                                // ColumnConfig.newBuilder().setName("DATED").setEventTimestamp(true).build(),
+                                // ColumnConfig.newBuilder().setName("CREATED").setEventTimestamp(true).build(),
                                 ColumnConfig.newBuilder().setName("CLASS").setPattern("%logger").build(),
                                 ColumnConfig.newBuilder().setName("LEVEL").setPattern("%level").build(),
                                 ColumnConfig.newBuilder().setName("MESSAGE").setPattern("%message").build(),

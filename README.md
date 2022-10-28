@@ -6,7 +6,7 @@
 ```sql
 -- Create LOGS table before starting the app. sample is for MySql
 CREATE TABLE `LOGS` (
-  `DATED` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `CREATED` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `CLASS` varchar(100) DEFAULT NULL,
   `LEVEL` varchar(10) DEFAULT NULL,
   `MESSAGE` text DEFAULT NULL,
