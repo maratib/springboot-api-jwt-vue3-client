@@ -32,10 +32,10 @@ public class LogConfig {
 
                 ColumnConfig[] columnConfigs = new ColumnConfig[] {
                                 // ColumnConfig.newBuilder().setName("CREATED").setEventTimestamp(true).build(),
-                                ColumnConfig.newBuilder().setName("CLASS").setPattern("%logger").build(),
-                                ColumnConfig.newBuilder().setName("LEVEL").setPattern("%level").build(),
-                                ColumnConfig.newBuilder().setName("MESSAGE").setPattern("%message").build(),
-                                ColumnConfig.newBuilder().setName("EXCEPTION").setPattern("%ex{full}").build()
+                                ColumnConfig.newBuilder().setName("ref").setPattern("%logger").build(),
+                                ColumnConfig.newBuilder().setName("level").setPattern("%level").build(),
+                                ColumnConfig.newBuilder().setName("message").setPattern("%message").build(),
+                                ColumnConfig.newBuilder().setName("exception").setPattern("%ex{full}").build()
                 };
 
                 // filter for the appender to keep only errors

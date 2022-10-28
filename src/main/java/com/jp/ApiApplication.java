@@ -20,16 +20,11 @@ public class ApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
-
-		log.debug("This is a debug message 1111111111");
-		log.info("This is an info message");
-		log.warn("This is a warn message");
-		log.error("This is an error message");
-		log.debug("null");
+		log.warn("** APPLICATION STARTED. **");
 	}
 
 	@PostConstruct()
-	public void started() throws IOException {
+	public void onStart() throws IOException {
 		System.out.println("Application started at port : " + serverPort);
 	}
 

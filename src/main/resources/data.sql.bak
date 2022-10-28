@@ -1,0 +1,9 @@
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ref` varchar(100) DEFAULT NULL,
+  `level` varchar(10) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `exception` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
