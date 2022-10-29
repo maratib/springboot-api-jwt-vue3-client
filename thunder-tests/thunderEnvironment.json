@@ -5,7 +5,7 @@
     "default": true,
     "sortNum": 10000,
     "created": "2022-10-18T15:17:49.156Z",
-    "modified": "2022-10-29T15:24:54.817Z",
+    "modified": "2022-10-29T22:06:03.751Z",
     "data": [
       {
         "name": "API",
@@ -13,7 +13,7 @@
       },
       {
         "name": "TOKEN",
-        "value": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SnpkV0lpT2lKaFpHMXBiaUlzSW1WNGNDSTZNVFkyTnpBMk1EVTFOMzAuV0p5MXRZZ2l1ajdNT2xyUkNTS0ZuNHFQYzMwRk5Kek9pZGVFWHlHWkpxN21UUGZmc2pNLW9wNGthQUctNld1a0RzZ282MU44a0ZZNDRFTTR6SHRJd1E="
+        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFkbWluQGFkbWluLmNvbSIsInJvbGVzIjoiW1JPTEVfQURNSU5dIiwiaWF0IjoxNjY3MDgxMTQxLCJleHAiOjE2NjcxNjc1NDF9.2qSdOfbDGAdPy1tRijbYuxAKCUfO28CiFzLVnmx6YP3s3jg15Fz-RndoSd46E6zSlwPYiyosLPm2PSeWwh5IiQ"
       }
     ]
   }

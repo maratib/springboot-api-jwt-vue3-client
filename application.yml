@@ -16,8 +16,9 @@ server:
 version:
   number: 0.3
 
-jwt:
-  secret: mysecretKey4433210
+app:
+  jwt:
+    secret: mysecretKey4433210dsfadsDSFDSF!@$$sdf
 
 spring:
   sql:

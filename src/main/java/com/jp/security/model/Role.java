@@ -1,4 +1,4 @@
-package com.jp.model;
+package com.jp.security.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,11 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     private String name;
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

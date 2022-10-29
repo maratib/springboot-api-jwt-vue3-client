@@ -1,19 +1,22 @@
 package com.jp.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 import lombok.Data;
 
 @Data
 public class AuthRequest {
 
-    @NotNull(message = "user is required")
-    @Size(max = 255)
-    private String user;
+    @NotNull(message = "email is required")
+    @Email
+    @Length(min = 5, max = 50)
+    private String email;
 
     @NotNull(message = "password is required")
-    @Size(max = 255)
+    @Length(min = 5, max = 20)
     private String password;
 
 }

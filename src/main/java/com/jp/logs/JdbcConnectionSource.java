@@ -1,4 +1,4 @@
-package com.jp.config;
+package com.jp.logs;
 
 import org.apache.commons.dbcp.DriverManagerConnectionFactory;
 import org.apache.commons.dbcp.PoolableConnection;

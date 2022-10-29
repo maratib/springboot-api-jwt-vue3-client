@@ -1,12 +1,15 @@
 package com.jp.api;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,34 +18,39 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.jp.dto.AuthRequest;
 import com.jp.dto.AuthResponse;
-import com.jp.service.TokenService;
-import com.jp.service.UserService;
+import com.jp.security.jwt.JwtTokenUtil;
+import com.jp.security.model.User;
+import com.jp.security.service.UserService;
 
 @RestController
 public class AuthApi {
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    AuthenticationManager authManager;
 
     @Autowired
     UserService userService;
 
     @Autowired
-    TokenService tokenService;
+    JwtTokenUtil jwtUtil;
 
-    @PostMapping("/auth")
-    public AuthResponse authenticate(@RequestBody @Valid final AuthRequest authRequest) {
+    @PostMapping("/auth/login")
+    @Transactional
+    public ResponseEntity<?> login(@RequestBody @Valid AuthRequest request) {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    authRequest.getUser(), authRequest.getPassword()));
-        } catch (final BadCredentialsException ex) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
-        }
+            Authentication authentication = authManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getEmail(), request.getPassword()));
 
-        final UserDetails userDetails = userService.loadUserByUsername(authRequest.getUser());
-        final AuthResponse authResponse = new AuthResponse();
-        authResponse.setAccessToken(tokenService.generateToken(userDetails));
-        return authResponse;
+            User user = (User) authentication.getPrincipal();
+            String accessToken = jwtUtil.generateAccessToken(user);
+            AuthResponse response = new AuthResponse(user.getEmail(), accessToken);
+
+            return ResponseEntity.ok().body(response);
+
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
 }

@@ -1,11 +1,11 @@
-package com.jp.model.repo;
+package com.jp.security.model.repo;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.jp.model.Role;
+import com.jp.security.model.Role;
 
 @Repository
 public interface RoleRepo extends JpaRepository<Role, Long> {

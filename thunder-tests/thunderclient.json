@@ -22,17 +22,17 @@
     "_id": "127cfcdf-1c81-4b7f-9b7b-228680c7125c",
     "colId": "0fd08c8f-4764-48e2-a67f-e3aa2c2f26d9",
     "containerId": "",
-    "name": "Auth",
-    "url": "{{API}}/auth",
+    "name": "Login",
+    "url": "{{API}}/auth/login",
     "method": "POST",
     "sortNum": 15000,
     "created": "2022-10-18T15:22:33.558Z",
-    "modified": "2022-10-29T15:12:07.087Z",
+    "modified": "2022-10-29T20:42:37.590Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"user\": \"admin\",\n  \"password\": \"admin\"\n}",
+      "raw": "{\n  \"email\": \"admin@admin.com\",\n  \"password\": \"admin\"\n}",
       "form": []
     },
     "tests": []
@@ -42,11 +42,29 @@
     "colId": "0fd08c8f-4764-48e2-a67f-e3aa2c2f26d9",
     "containerId": "",
     "name": "user",
-    "url": "{{API}}/user",
+    "url": "{{API}}/api/user",
     "method": "GET",
     "sortNum": 25000,
     "created": "2022-10-19T12:30:24.999Z",
-    "modified": "2022-10-19T12:34:58.521Z",
+    "modified": "2022-10-29T20:59:12.706Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{TOKEN}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "653fcd63-4496-4ada-a06c-fee142980226",
+    "colId": "0fd08c8f-4764-48e2-a67f-e3aa2c2f26d9",
+    "containerId": "",
+    "name": "admin",
+    "url": "{{API}}/api/admin",
+    "method": "GET",
+    "sortNum": 35000,
+    "created": "2022-10-29T22:07:37.280Z",
+    "modified": "2022-10-29T22:08:04.973Z",
     "headers": [],
     "params": [],
     "auth": {

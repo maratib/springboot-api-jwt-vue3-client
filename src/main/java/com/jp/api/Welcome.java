@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jp.model.ERole;
-import com.jp.model.Role;
-import com.jp.model.repo.RoleRepo;
-import com.jp.model.repo.UserRepo;
+import com.jp.security.model.repo.RoleRepo;
+import com.jp.security.model.repo.UserRepo;
+import com.jp.security.model.ERole;
+import com.jp.security.model.Role;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,13 +35,14 @@ public class Welcome {
 
     }
 
-    @GetMapping("/user")
-    @RolesAllowed({ ERole.ROLE_ADMIN, ERole.ROLE_EDITOR })
+    @GetMapping("/api/user")
+    @RolesAllowed({ ERole.USER })
     public String user() {
         return "Hello, User!";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/api/admin")
+    @RolesAllowed({ ERole.ADMIN })
     public String admin() {
         return "Hello, Admin!";
     }

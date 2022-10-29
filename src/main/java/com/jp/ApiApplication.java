@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.jp.model.User;
-import com.jp.model.repo.UserRepo;
-import com.jp.service.UserService;
+import com.jp.security.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
