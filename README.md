@@ -1,15 +1,8 @@
 # Springboot API, JWT Role Based Auth, Log4J2, db logging, Vue 3 Client
 
+## Initialization 
+```bash
+# Initialization instructions
 
 
-### Log4j2
-```sql
--- Create LOGS table before starting the app. sample is for MySql
-CREATE TABLE `LOGS` (
-  `CREATED` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `CLASS` varchar(100) DEFAULT NULL,
-  `LEVEL` varchar(10) DEFAULT NULL,
-  `MESSAGE` text DEFAULT NULL,
-  `EXCEPTION` text DEFAULT NULL
-)
 ```

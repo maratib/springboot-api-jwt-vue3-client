@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 public class AuthRequest {
 
-    @NotNull(message = "login is required")
+    @NotNull(message = "user is required")
     @Size(max = 255)
-    private String login;
+    private String user;
 
     @NotNull(message = "password is required")
     @Size(max = 255)

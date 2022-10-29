@@ -15,8 +15,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.jp.dto.AuthRequest;
 import com.jp.dto.AuthResponse;
-import com.jp.service.JwtTokenService;
-import com.jp.service.JwtUserDetailsService;
+import com.jp.service.TokenService;
+import com.jp.service.UserService;
 
 @RestController
 public class AuthApi {
@@ -25,23 +25,23 @@ public class AuthApi {
     AuthenticationManager authenticationManager;
 
     @Autowired
-    JwtUserDetailsService jwtUserDetailsService;
+    UserService userService;
 
     @Autowired
-    JwtTokenService jwtTokenService;
+    TokenService tokenService;
 
     @PostMapping("/auth")
     public AuthResponse authenticate(@RequestBody @Valid final AuthRequest authRequest) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    authRequest.getLogin(), authRequest.getPassword()));
+                    authRequest.getUser(), authRequest.getPassword()));
         } catch (final BadCredentialsException ex) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
-        final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(authRequest.getLogin());
+        final UserDetails userDetails = userService.loadUserByUsername(authRequest.getUser());
         final AuthResponse authResponse = new AuthResponse();
-        authResponse.setAccessToken(jwtTokenService.generateToken(userDetails));
+        authResponse.setAccessToken(tokenService.generateToken(userDetails));
         return authResponse;
     }
 

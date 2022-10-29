@@ -16,17 +16,17 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.jp.service.JwtTokenService;
-import com.jp.service.JwtUserDetailsService;
+import com.jp.service.TokenService;
+import com.jp.service.UserService;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    JwtUserDetailsService jwtUserDetailsService;
+    UserService userService;
 
     @Autowired
-    JwtTokenService jwtTokenService;
+    TokenService tokenService;
 
     @Override
     protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response,
@@ -40,7 +40,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
 
         final String token = header.substring(7);
-        final String username = jwtTokenService.validateTokenAndGetUsername(token);
+        final String username = tokenService.validateTokenAndGetUsername(token);
         if (username == null) {
             // validation failed or token expired
             chain.doFilter(request, response);
@@ -49,7 +49,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         System.out.println("Go into chain1");
         // set user details on spring security context
-        final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(username);
+        final UserDetails userDetails = userService.loadUserByUsername(username);
         System.out.println(userDetails);
         final UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 userDetails, null, userDetails.getAuthorities());

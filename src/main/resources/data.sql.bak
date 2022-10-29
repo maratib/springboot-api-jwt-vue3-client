@@ -1,4 +1,4 @@
-CREATE TABLE `logs` (
+CREATE TABLE IF NOT EXISTS `logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `ref` varchar(100) DEFAULT NULL,

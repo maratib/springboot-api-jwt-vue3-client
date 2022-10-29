@@ -27,12 +27,12 @@
     "method": "POST",
     "sortNum": 15000,
     "created": "2022-10-18T15:22:33.558Z",
-    "modified": "2022-10-20T09:41:09.127Z",
+    "modified": "2022-10-29T15:12:07.087Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"login\": \"app\",\n  \"password\": \"password\"\n}",
+      "raw": "{\n  \"user\": \"admin\",\n  \"password\": \"admin\"\n}",
       "form": []
     },
     "tests": []

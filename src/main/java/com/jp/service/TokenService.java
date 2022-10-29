@@ -16,13 +16,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class JwtTokenService {
+public class TokenService {
 
     private static final long JWT_TOKEN_VALIDITY = 60 * 60 * 1000;
     private final Algorithm hmac512;
     private final JWTVerifier verifier;
 
-    public JwtTokenService(@Value("${jwt.secret}") final String secret) {
+    public TokenService(@Value("${jwt.secret}") final String secret) {
         System.out.println("JwtTokenService created : secret :" + secret);
         this.hmac512 = Algorithm.HMAC512(secret);
         this.verifier = JWT.require(this.hmac512).build();
@@ -42,9 +42,10 @@ public class JwtTokenService {
         System.out.println("Token Before : " + token);
         token = new String(Base64.getDecoder().decode(token.getBytes()));
 
-        System.out.println("Token1 : " + token);
+        System.out.println("Token After : " + token);
         System.out.println("JwtTokenService validate");
         try {
+            System.out.println("Subject : " + verifier.verify(token).getSubject());
             return verifier.verify(token).getSubject();
         } catch (final JWTVerificationException verificationEx) {
             log.warn("token invalid: {}", verificationEx.getMessage());

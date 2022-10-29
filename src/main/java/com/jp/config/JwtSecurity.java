@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.jp.model.ERole;
+
 @Configuration
 public class JwtSecurity {
 
@@ -35,7 +37,9 @@ public class JwtSecurity {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/auth").permitAll().anyRequest().hasRole("USER").and()
+                .antMatchers("/auth").permitAll().anyRequest()
+                .hasAnyRole(ERole.ROLE_USER, ERole.ROLE_EDITOR, ERole.ROLE_ADMIN).and()
+                // .hasRole("ROLE_USER").and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
