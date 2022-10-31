@@ -1,4 +1,4 @@
-package com.jp.dto;
+package com.jp.dto.auth;
 
 import lombok.Data;
 

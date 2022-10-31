@@ -27,12 +27,12 @@
     "method": "POST",
     "sortNum": 15000,
     "created": "2022-10-18T15:22:33.558Z",
-    "modified": "2022-10-29T20:42:37.590Z",
+    "modified": "2022-10-31T11:52:09.747Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"email\": \"admin@admin.com\",\n  \"password\": \"admin\"\n}",
+      "raw": "{\n  \"email\": \"admin@admin.com\"\n}",
       "form": []
     },
     "tests": []
@@ -56,20 +56,57 @@
     "tests": []
   },
   {
-    "_id": "653fcd63-4496-4ada-a06c-fee142980226",
+    "_id": "0894efbe-a259-4a29-831d-873f4ede3a23",
     "colId": "0fd08c8f-4764-48e2-a67f-e3aa2c2f26d9",
-    "containerId": "",
+    "containerId": "d0a18bf7-f561-4444-b7e8-159e91f12251",
     "name": "admin",
     "url": "{{API}}/api/admin",
     "method": "GET",
-    "sortNum": 35000,
-    "created": "2022-10-29T22:07:37.280Z",
-    "modified": "2022-10-29T22:08:04.973Z",
+    "sortNum": 10000,
+    "created": "2022-10-31T10:28:59.922Z",
+    "modified": "2022-10-31T10:37:44.887Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
       "bearer": "{{TOKEN}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "5a5afaaa-f39c-49e8-82db-059e8453ffc3",
+    "colId": "0fd08c8f-4764-48e2-a67f-e3aa2c2f26d9",
+    "containerId": "f260e402-581e-4664-acc5-20d7d3415786",
+    "name": "user",
+    "url": "{{API}}/api/user",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-31T10:29:22.169Z",
+    "modified": "2022-10-31T10:29:22.169Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{TOKEN}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "c02e7a13-4884-4d4f-a283-b47407cd4a15",
+    "colId": "0fd08c8f-4764-48e2-a67f-e3aa2c2f26d9",
+    "containerId": "d0a18bf7-f561-4444-b7e8-159e91f12251",
+    "name": "admin - create -user ",
+    "url": "{{API}}/api/admin/create-user",
+    "method": "POST",
+    "sortNum": 45000,
+    "created": "2022-10-31T10:39:57.318Z",
+    "modified": "2022-10-31T13:17:49.029Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\": \"user2@user.com\",\n  \"password\": \"Sam12345\",\n  \"role\": 3\n}",
+      "form": []
     },
     "tests": []
   }

@@ -1,7 +1,6 @@
 package com.jp;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -35,7 +34,7 @@ public class ApiApplication {
 	}
 
 	@PostConstruct()
-	public void onStart() throws IOException {
+	public void onStart() throws Exception {
 		initCheck();
 		ApiApplication.appVersion = version;
 		System.out.println("Application started at port : " + serverPort);
@@ -46,7 +45,7 @@ public class ApiApplication {
 		System.out.println("Exiting app...");
 	}
 
-	private void initCheck() {
+	private void initCheck() throws Exception {
 		userService.initAdminUserCheck();
 	}
 

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jp.dto.AuthRequest;
-import com.jp.dto.AuthResponse;
+import com.jp.dto.auth.AuthRequest;
+import com.jp.dto.auth.AuthResponse;
 import com.jp.security.jwt.JwtTokenUtil;
 import com.jp.security.model.User;
 import com.jp.security.service.UserService;

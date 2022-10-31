@@ -1,6 +1,9 @@
 package com.jp.security.service;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.jp.dto.user.RegisterRequest;
 import com.jp.security.model.ERole;
 import com.jp.security.model.Role;
 import com.jp.security.model.User;
@@ -29,7 +33,25 @@ public class UserService {
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public User save(User user) {
+    public User createUser(RegisterRequest req) throws Exception {
+
+        User newUser = new User(req.getEmail(), req.getPassword());
+
+        Optional<Role> role = roleRepo.findById(req.getRole());
+        if (role.isPresent()) {
+            newUser.addRole(role.get());
+        }
+
+        return this.save(newUser);
+    }
+
+    private User save(User user) throws Exception {
+        Optional<User> alreadyExists = userRepo.findByEmail(user.getEmail());
+
+        if (alreadyExists.isPresent()) {
+            throw new Exception("User already exists");
+        }
+
         String rawPassword = user.getPassword();
         String encodedPassword = passwordEncoder.encode(rawPassword);
         user.setPassword(encodedPassword);
@@ -37,7 +59,7 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public void initAdminUserCheck() {
+    public void initAdminUserCheck() throws Exception {
         Optional<User> user = userRepo.findByEmail("admin@admin.com");
 
         if (user.isEmpty()) {
