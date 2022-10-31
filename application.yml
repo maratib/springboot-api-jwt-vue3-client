@@ -13,10 +13,8 @@ logging:
 server:
   port: "8081"
 
-version:
-  number: 0.3
-
 app:
+  version: 0.3
   jwt:
     secret: mysecretKey4433210dsfadsDSFDSF!@$$sdf
 

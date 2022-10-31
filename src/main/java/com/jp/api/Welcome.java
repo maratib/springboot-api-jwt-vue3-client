@@ -35,15 +35,4 @@ public class Welcome {
 
     }
 
-    @GetMapping("/api/user")
-    @RolesAllowed({ ERole.USER })
-    public String user() {
-        return "Hello, User!";
-    }
-
-    @GetMapping("/api/admin")
-    @RolesAllowed({ ERole.ADMIN })
-    public String admin() {
-        return "Hello, Admin!";
-    }
 }

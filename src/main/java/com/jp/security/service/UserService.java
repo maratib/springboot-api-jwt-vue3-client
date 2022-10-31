@@ -1,9 +1,6 @@
 package com.jp.security.service;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,29 +36,6 @@ public class UserService {
 
         return userRepo.save(user);
     }
-
-    // @Override
-    // public UserDetails loadUserByUsername(final String username) {
-    // System.out.println("JwtUserDetailsService loadUserByName - " + username);
-    // // final Client client = clientRepository.findByLogin(username).orElseThrow(
-    // // () -> new UsernameNotFoundException("User " + username + " not found"));
-    // // return new User(username, client.getHash(), Collections.singletonList(new
-    // // SimpleGrantedAuthority(ROLE_USER)));
-    // // UserDetails user =
-    // //
-    // User.withUsername("mail@mail.com").password("password").authorities("USER").build();
-
-    // final UserDetails userDetails =
-    // userRepo.findByUsername(username).orElseThrow(
-    // () -> new UsernameNotFoundException("User " + username + " not found"));
-
-    // // String password = passwordEncoder.encode("password");
-    // // UserDetails user = new User("mail@mail.com", password,
-    // Collections.singleton(
-    // // new SimpleGrantedAuthority(ROLE_USER)));
-    // System.out.println("User : " + userDetails);
-    // return userDetails;
-    // }
 
     public void initAdminUserCheck() {
         Optional<User> user = userRepo.findByEmail("admin@admin.com");

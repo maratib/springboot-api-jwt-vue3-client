@@ -24,6 +24,11 @@ public class ApiApplication {
 	@Value("${server.port}")
 	private int serverPort;
 
+	@Value("${app.version}")
+	public String version;
+
+	public static String appVersion;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
 		log.warn("** APPLICATION STARTED. **");
@@ -32,6 +37,7 @@ public class ApiApplication {
 	@PostConstruct()
 	public void onStart() throws IOException {
 		initCheck();
+		ApiApplication.appVersion = version;
 		System.out.println("Application started at port : " + serverPort);
 	}
 
